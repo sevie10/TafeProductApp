@@ -16,6 +16,7 @@ namespace ProductApps
         private decimal gst;
         private decimal totalCharge;
         private decimal totalWrap;
+        private decimal totalGST;
 
         private decimal Price
         {
@@ -46,6 +47,12 @@ namespace ProductApps
             get{return totalWrap;}
         set{totalWrap = value;}
 }
+
+        public decimal TotalGST
+        {
+            get { return totalGST; }
+            set { totalGST = value; }
+        }
 
 
         private decimal Delivery
@@ -89,7 +96,13 @@ namespace ProductApps
         //Calculate the total charge plus wrapping
         public void calTotalWrap()
         {
-            TotalWrap = totalPayment + 30;
+            TotalWrap = TotalPayment + 30;
+        }
+
+        //Calculate the total after GST
+        public void calTotalAfterGST()
+        {
+            TotalGST = (TotalPayment + 30) * Convert.ToDecimal(1.1);
         }
     }
 }
